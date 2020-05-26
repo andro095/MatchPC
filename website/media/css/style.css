@@ -1,0 +1,160 @@
+@font-face {
+    src: url("/media/fonts/Pixel Powerline.ttf");
+    font-family: pixel-power;
+}
+
+@font-face {
+    src: url("/media/fonts/Quicksand_Book.otf");
+    font-family: quicksand;
+    font-style: normal;
+    font-weight: 400;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Book_Oblique.otf");
+    font-family: quicksand;
+    font-style: italic;
+    font-weight: 400;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Bold.otf");
+    font-family: quicksand;
+    font-style: normal;
+    font-weight: 700;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Bold_Oblique.otf");
+    font-family: quicksand;
+    font-style: italic;
+    font-weight: 700;
+}
+
+body{
+    margin: 0;
+    text-align: center;
+}
+
+a:link, a:visited {
+    background-color: royalblue;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 7px;
+}
+
+a:hover, a:active {
+    background-color: rgb(56, 89, 189);
+  }
+
+footer {
+    background-color: black;
+    color: #ffffff;
+    padding: 20px;
+}
+
+#banner {
+    background: url("/media/assets/Banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    padding: 16em 0em 14em;
+    text-align: center;
+}
+
+    #banner h1 {
+        color: #ffffff;
+        font-family: pixel-power;
+        font-size: 6em;
+        line-height: 1em;
+        margin: 0 0 0.5em 0;
+        padding: 0;
+    }
+
+    #banner h3 {
+        font-size: 1.5em;
+        font-family: quicksand;
+        font-style: italic;
+        margin: 0;
+    }
+
+    #banner .actions {
+        margin: 3em 0 0 0;
+    }
+
+#scroll {
+    width: auto;
+    background-color: royalblue;
+    padding: 10px;
+}
+    #scroll img{
+        width: 60px;
+    }
+
+.container {
+    font-family: quicksand;
+    display: grid;
+    margin: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+    .container h2 {
+        font-weight: 700;
+    }
+
+    .container p {
+        font-size: 1.5em;
+    }
+
+    .container fieldset {
+        background-color: rgba(65, 105, 225, 0.301);
+        border-style: none;
+        padding: 20px;
+    }
+
+#round_img {
+    width: 54%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 1410px){
+    #banner h1 {
+        font-size: 4em;
+    }
+
+    #banner h3 {
+        font-size: 1em;
+    }
+    #scroll img {
+        width: 30px;
+    }
+    .container p {
+        font-size: 1em;
+    }
+    .container a{
+        font-size: 0.75em;
+    }
+    #round_img{
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 1015px){
+    .container{
+        grid-template-columns: 1fr;
+        grid-gap: 5rem;
+    }
+
+    #banner h1 {
+        font-size: 4em;
+    }
+
+    #banner h3 {
+        font-size: 1em;
+    }
+    #scroll img {
+        width: 30px;
+    }
+    .container p {
+        font-size: 1em;
+    }
+}
