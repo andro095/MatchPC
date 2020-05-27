@@ -1,0 +1,121 @@
+@font-face {
+    src: url("/media/fonts/Pixel Powerline.ttf");
+    font-family: pixel-power;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Book.otf");
+    font-family: quicksand;
+    font-style: normal;
+    font-weight: 400;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Book_Oblique.otf");
+    font-family: quicksand;
+    font-style: italic;
+    font-weight: 400;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Bold.otf");
+    font-family: quicksand;
+    font-style: normal;
+    font-weight: 700;
+}@font-face {
+    src: url("/media/fonts/Quicksand_Bold_Oblique.otf");
+    font-family: quicksand;
+    font-style: italic;
+    font-weight: 700;
+}
+
+body{
+    margin: 0;
+    text-align: center;
+    background-color: #fff0d1;
+}
+
+footer {
+    background-color: black;
+    color: #ffffff;
+    padding: 20px;
+}
+
+h1 {
+    font-family: pixel-power;
+    color: royalblue;
+    font-size: 4.5em;
+    position: sticky;
+    margin: 0;
+}
+
+h2 {
+    color: black;
+    font-family: quicksand;
+    font-style: italic;
+}
+
+.container {
+    background-color: rgb(198, 210, 246);
+    margin: 5vw;
+    padding: 5vw;
+    border-radius: 0.5%;
+    font-family: quicksand;
+}
+
+.text_header {
+    box-shadow: 10px 10px 5px #aaaaaa
+}
+
+fieldset {
+    font-size: 1.2em;
+    text-align: left;
+    padding: 25px;
+    border-color: white;
+    border-width: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.pc_container {
+    background-color: white;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+    padding: 2vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 60px;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+    .pc_container img {
+        width: 100%;
+    }
+
+
+#input_data {
+    margin: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    font-size: 1.2em;
+    font-family: quicksand;
+    width: fit-content;
+}
+
+    #input_data select {
+        border-color: white;
+    }
+
+    #input_data input {
+        background-color: royalblue;
+        border-style: none;
+        margin: 0;
+        color: white;
+        border-radius: 40px;
+        padding: 15px;
+    }

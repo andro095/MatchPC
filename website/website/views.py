@@ -7,3 +7,6 @@ from django.shortcuts import render
 def index(request):
     return render(request, "index.html", {})
     #return HttpResponse("Aqui va la pagina principal")
+
+def match(request):
+    return render(request, "match.html", {})

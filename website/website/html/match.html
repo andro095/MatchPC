@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/media/css/form_style.css">
+        <title>MatchPC</title>
+    </head>
+
+    <body>
+        <header>
+            {% include "menu.html" %}
+        </header>
+        
+        <form>
+            <div class="container">
+                <div id="text_header">
+                    <h1>MatchPC</h1>
+                    <h2>Compre inteligentemente en base a sus necesidades</h2>
+                </div>
+                
+                <fieldset>
+                    <p>Por favor, ingrese los parámetros de búsqueda que mejor satisfacen sus necesidades. </p>
+                    <p>El uso de datos es completamente anónimo y no almacenamos ningún tipo información sin su consentimiento.</p><br>
+                    <legend>Parámetros de consulta</legend>
+
+                    <div id="input_data">
+                        <select name="txtNivel" id="txtNivel">
+                            <option value="" disabled selected>Nivel de estudios</option>
+                            <option value="diversificado">Diversificado</option>
+                            <option value="universitario">Universitario</option>
+                            <option value="profesional">Profesional</option>
+                        </select>
+
+                        <select name="txtAmbito" id="txtAmbito">
+                            <option value="" disabled selected>Ámbito de uso</option>
+                            <option value="Ing. en Computacion">Ingeniería en Computación</option>
+                            <option value="Ing. Industrial">Ingeniería Industrial</option>
+                            <option value="Diseño Gráfico">Diseño Gráfico</option>
+                        </select>
+    
+                        <input type="submit" value="Enviar">
+                    </div>
+
+                </fieldset>
+
+                <br><br><br>
+
+                <div class="pc_container">
+                    <img id="round_img" src="/media/compu_img/notFound.png">
+                    <div id="pc_data">
+                        <h2>Modelo</h2>
+                        <p>Tipo: </p>
+                        <p>Marca: </p>
+                        <p>Modelo: </p>
+                        <p>CPU: </p>
+                        <p>Tipo de RAM: </p>
+                        <p>Capacidad RAM: </p>
+                        <p>GPU marca: </p>
+                        <p>GPU modelo: </p>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        
+        <br><br>
+
+        <footer>
+            <p>© Untitled. Todos los derechos reservados.</p>
+        </footer>
+    </body>
+</html>
