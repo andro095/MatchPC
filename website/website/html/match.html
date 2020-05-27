@@ -3,6 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/media/css/form_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>MatchPC</title>
     </head>
 
@@ -16,13 +17,8 @@
                 <div id="text_header">
                     <h1>MatchPC</h1>
                     <h2>Compre inteligentemente en base a sus necesidades</h2>
-                </div>
-                
-                <fieldset>
-                    <p>Por favor, ingrese los parámetros de búsqueda que mejor satisfacen sus necesidades. </p>
-                    <p>El uso de datos es completamente anónimo y no almacenamos ningún tipo información sin su consentimiento.</p><br>
-                    <legend>Parámetros de consulta</legend>
 
+                    <br>
                     <div id="input_data">
                         <select name="txtNivel" id="txtNivel">
                             <option value="" disabled selected>Nivel de estudios</option>
@@ -30,7 +26,7 @@
                             <option value="universitario">Universitario</option>
                             <option value="profesional">Profesional</option>
                         </select>
-
+    
                         <select name="txtAmbito" id="txtAmbito">
                             <option value="" disabled selected>Ámbito de uso</option>
                             <option value="Ing. en Computacion">Ingeniería en Computación</option>
@@ -40,26 +36,31 @@
     
                         <input type="submit" value="Enviar">
                     </div>
-
-                </fieldset>
+                </div>
 
                 <br><br><br>
 
-                <div class="pc_container">
-                    <img id="round_img" src="/media/compu_img/notFound.png">
-                    <div id="pc_data">
-                        <h2>Modelo</h2>
-                        <p>Tipo: </p>
-                        <p>Marca: </p>
-                        <p>Modelo: </p>
-                        <p>CPU: </p>
-                        <p>Tipo de RAM: </p>
-                        <p>Capacidad RAM: </p>
-                        <p>GPU marca: </p>
-                        <p>GPU modelo: </p>
-                    </div>
-                </div>
-
+                <table>
+                    <tr>
+                        <td><button class="btnArrow"><i class="fa fa-chevron-left"></i></button></td>
+                        <td><div class="pc_container">
+                            <img id="round_img" src="/media/compu_img/notFound.png">
+                            <div id="pc_data">
+                                <h2>Modelo</h2>
+                                <p>Tipo: </p>
+                                <p>Marca: </p>
+                                <p>Modelo: </p>
+                                <p>CPU: </p>
+                                <p>Tipo de RAM: </p>
+                                <p>Capacidad RAM: </p>
+                                <p>GPU marca: </p>
+                                <p>GPU modelo: </p>
+                            </div>
+                        </div></td>
+                        <td><button class="btnArrow"><i class="fa fa-chevron-right"></i></button></td>
+                    </tr>
+                </table>
+                    
             </div>
         </form>
         
