@@ -4,6 +4,10 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/media/css/form_style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
         <title>MatchPC</title>
     </head>
 
@@ -37,24 +41,27 @@
                         <input type="submit" value="Enviar">
                     </div>
                 </div>
-
-                <br><br><br>
+            </form>
+            
+            <br><br><br>
+            <form method="POST">
+                {% csrf_token %}
 
                 <table>
                     <tr>
                         <td><button class="btnArrow"><i class="fa fa-chevron-left"></i></button></td>
                         <td><div class="pc_container">
-                            <img id="round_img" src="/media/compu_img/notFound.png">
+                            <img id="round_img" src="/media/compu_img/{{img_name}}.png">
                             <div id="pc_data">
-                                <h2>Modelo</h2>
-                                <p>Tipo: </p>
-                                <p>Marca: </p>
-                                <p>Modelo: </p>
-                                <p>CPU: </p>
-                                <p>Tipo de RAM: </p>
-                                <p>Capacidad RAM: </p>
-                                <p>GPU marca: </p>
-                                <p>GPU modelo: </p>
+                                <h2>{{modelo}}</h2>
+                                <p>Tipo: {{tipo}}</p>
+                                <p>Marca: {{marca}}</p>
+                                <p>Modelo: {{mdoelo}}</p>
+                                <p>CPU: {{cpu}}</p>
+                                <p>Tipo de RAM: {{tipo_ram}}</p>
+                                <p>Capacidad RAM: {{capacidad_ram}}</p>
+                                <p>GPU marca: {{gpu_marca}}</p>
+                                <p>GPU modelo: {{gpu_modelo}}</p>
                             </div>
                         </div></td>
                         <td><button class="btnArrow"><i class="fa fa-chevron-right"></i></button></td>
@@ -62,8 +69,8 @@
                 </table>
                     
             </div>
-        </form>
         
+        </form>
         <br><br>
 
         <footer>
