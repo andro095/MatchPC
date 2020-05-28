@@ -17,7 +17,7 @@
         </header>
         
         <div class="container">
-            <form>
+            <form action="{% url 'match_query' %}">
                 <div id="text_header">
                     <h1>MatchPC</h1>
                     <h2>Compre inteligentemente en base a sus necesidades</h2>
@@ -47,26 +47,26 @@
             <form method="POST">
                 {% csrf_token %}
 
-                <table>
-                    <tr>
-                        <td><button class="btnArrow"><i class="fa fa-chevron-left"></i></button></td>
-                        <td><div class="pc_container">
-                            <img id="round_img" src="/media/compu_img/{{img_name}}.png">
-                            <div id="pc_data">
-                                <h2>{{modelo}}</h2>
-                                <p>Tipo: {{tipo}}</p>
-                                <p>Marca: {{marca}}</p>
-                                <p>Modelo: {{mdoelo}}</p>
-                                <p>CPU: {{cpu}}</p>
-                                <p>Tipo de RAM: {{tipo_ram}}</p>
-                                <p>Capacidad RAM: {{capacidad_ram}}</p>
-                                <p>GPU marca: {{gpu_marca}}</p>
-                                <p>GPU modelo: {{gpu_modelo}}</p>
-                            </div>
-                        </div></td>
-                        <td><button class="btnArrow"><i class="fa fa-chevron-right"></i></button></td>
-                    </tr>
-                </table>
+                {% if query %}
+
+                <div class="pc_container">
+                    <img id="round_img" src="/media/compu_img/{{img_name}}.png">
+                    <div id="pc_data">
+                        <h2>{{modelo}}</h2>
+                        <p>Tipo: {{tipo}}</p>
+                        <p>Marca: {{marca}}</p>
+                        <p>Modelo: {{mdoelo}}</p>
+                        <p>CPU: {{cpu}}</p>
+                        <p>Tipo de RAM: {{tipo_ram}}</p>
+                        <p>Capacidad RAM: {{capacidad_ram}}</p>
+                        <p>GPU marca: {{gpu_marca}}</p>
+                        <p>GPU modelo: {{gpu_modelo}}</p>
+                    </div>
+                </div>
+                <br>
+
+                {% endif %}
+
             </form>      
         </div>
         
