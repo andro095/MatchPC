@@ -5,4 +5,4 @@
 #
 # Esto es el algoritmo de una aplicacion de recomendaciones para estudiantes que tienen dificultades de elegir una computadora que se adapte a sus necesidades, por el cual, por medio de ciertos datos introducidos por el usuario se le será recomendado un listado de computadoras.
 
-[index](https://github.com/user/repo/blob/branch/other_file.md)
+[index](https://github.com/wsaldana/MatchPC/blob/master/website/website/html/index.html)
