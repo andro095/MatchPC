@@ -8,8 +8,19 @@ def index(request):
     return render(request, "index.html", {})
     #return HttpResponse("Aqui va la pagina principal")
 
+def about(request):
+    return render(request, "about.html", {})
+
 def match(request):
     context = {
+        'query': False,
+    }
+    
+    return render(request, "match.html", context)
+
+def match_query(request):
+    context = {
+        'query': True,
         'modelo': 'Alienware Area 51',
         'tipo': 'Laptop',
         'marca': 'Alienware',
