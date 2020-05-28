@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 #Importar vistas
-from website.views import index, match, match_query, about
+from website.views import index, match, match_query, about, aportar
 #Importar dependencias para manejos de archivos
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,6 +25,7 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('', index, name="index"),
     path('about/', about, name="about"),
+    path('aportar/', aportar, name="aportar"),
     path('match/', match, name="match"),
     path('match_query/', match_query, name="match_query"),
 ] 

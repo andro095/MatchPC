@@ -18,6 +18,9 @@ def match(request):
     
     return render(request, "match.html", context)
 
+def aportar(request):
+    return render(request, "aportar.html", {})
+
 def match_query(request):
     context = {
         'query': True,
