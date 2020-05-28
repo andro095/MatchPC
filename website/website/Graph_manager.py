@@ -8,7 +8,7 @@ class Graph_manager:
         #Conexion y configuracion de python para neo4j
         uri             = "bolt://localhost:7687"
         userName        = "neo4j"
-        password        = "123"
+        password        = "Lisp1234"
         self.db = GraphDatabase.driver(uri, auth=(userName, password), encrypted=False)
         
     #Setter y Getter   
@@ -19,27 +19,31 @@ class Graph_manager:
         self.db = db
         
     #Recomendar computadora a usuario
-    def recommend(self):
+    def recommend(self, ambito, nivel):
         with self.db.session() as session:
-            record = session.run("MATCH (p:PC),(u:User) WHERE (u)-[:Ambito]->({Ambito:'Diseño Gráfico'}) AND (u)-[:Nivel]->({Level:'Profesional'}) AND (u)-[:PC]->(p) return p")
+            record = session.run("MATCH (p:PC),(u:User) WHERE (u)-[:Ambito]->({Ambito:'%s'}) AND (u)-[:Nivel]->({Level:'%s'}) AND (u)-[:PC]->(p) RETURN p, COUNT(p)"%(ambito,nivel))
+            results = []
             for line in record:
-                print("La computadora que se adecua a su ambito y nivel profesional es:")
-                print (line["p"])
+                results.append((dict(line["p"]), line["COUNT(p)"]))
+                
+            return sorted(results, key=lambda kv: kv[1], reverse=True)
             
-    def add_User(self):
-        g.generate_id
+    def add_User(self, ambito, nivel, pc):
+        new_id = self.generate_id()
         with self.db.session() as session:
-            record = session.run("CREATE (a:User { ID: 'User021' }) WITH a "
-"MATCH (a:User),(b:Ambito) WHERE a.ID = 'User021' AND b.Ambito = 'Diseño Gráfico' " 
-"CREATE (a)-[r:Ambito]->(b) WITH a MATCH (a:User), (b:Nivel) WHERE a.ID = 'User019' AND b.Level = 'Profesional' "
-"CREATE (a)-[r:Nivel]->(b) "
-"WITH a, b MATCH (a:User),(b:PC)WHERE a.ID = 'User021' AND b.modelo = 'Alienware Razer' CREATE (a)-[r:PC]->(b)")
+            session.run("CREATE (a:User { ID: '%s' }) "%(new_id))
+            session.run("MATCH (a:User),(b:Ambito) WHERE a.ID = '%s' AND b.Ambito = '%s' CREATE (a)-[r:Ambito]->(b)"%(new_id, ambito))
+            session.run("MATCH (a:User),(b:Nivel) WHERE a.ID = '%s' AND b.Level = '%s' CREATE (a)-[r:Nivel]->(b)"%(new_id,nivel))
+            session.run("MATCH (a:User),(b:PC) WHERE a.ID = '%s' AND b.modelo = '%s' CREATE (a)-[r:PC]->(b)"%(new_id,pc))
             print("Usuario añadido con exito")
     
     def generate_id(self):
-        with db.session() as session:
-             record = session.run("MATCH (u:User) return COUNT(u)")
+        with self.db.session() as session:
+            record = session.run("MATCH (u:User) return COUNT(u)")
+            for r in record:
+                return "User0"+str(r['COUNT(u)']+1)
             
-g = Graph_manager()
-g.add_User()
-g.recommend()
+            
+#g = Graph_manager()
+#g.add_User("Mecanica","Profesional","DELL G3")
+#print(g.recommend("Mecanica","Profesional"))
