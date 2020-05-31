@@ -3,7 +3,46 @@ from django.template import Template, Context
 from django.template.loader import get_template
 from django.shortcuts import render
 from neo4j import GraphDatabase
+import os
 
+#Funcion vista de la pagina principal
+def index(request):
+    return render(request, "index.html", {})
+    #return HttpResponse("Aqui va la pagina principal")
+
+def about(request):
+    return render(request, "about.html", {})
+
+def match(request):
+    context = {
+        'query': False,
+    }
+    
+    return render(request, "match.html", context)
+
+def aportar(request):
+    return render(request, "aportar.html", {})
+
+def match_query(request):
+    db = Graph_manager()
+    r = db.recommend(request.GET["txtAmbito"],request.GET["txtNivel"])
+    context = {
+        'query': True,
+        'request': r,
+        'size': len(r),
+        'img_name': 'notFound.png'
+    }
+    '''
+    if(len(r) > 0):
+        IMG_URL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/media/compu_img/"
+        if(os.path.isfile(IMG_URL+context['request'][0]+".png")):
+            context['img_name'] = context['request']+".png"
+        elif(os.path.isfile(IMG_URL+context['request']+".jpg")):
+            context['img_name'] = context['request']+".jpg"
+    '''
+    return render(request, "match.html", context)
+
+#Clase principal
 class Graph_manager:
     #Inicialización
     def __init__(self):
@@ -44,47 +83,3 @@ class Graph_manager:
             record = session.run("MATCH (u:User) return COUNT(u)")
             for r in record:
                 return "User0"+str(r['COUNT(u)']+1)
-
-#Funcion vista de la pagina principal
-def index(request):
-    return render(request, "index.html", {})
-    #return HttpResponse("Aqui va la pagina principal")
-
-def about(request):
-    return render(request, "about.html", {})
-
-def match(request):
-    context = {
-        'query': False,
-    }
-    
-    return render(request, "match.html", context)
-
-def aportar(request):
-    return render(request, "aportar.html", {})
-
-def match_query(request):
-    db = Graph_manager()
-    r = db.recommend(request.GET["txtAmbito"],request.GET["txtNivel"])
-    context = {
-        'query': True,
-        'modelo': r[0][0]['modelo'],
-        'tipo': r[0][0]['tipo'],
-        'marca': r[0][0]['marca'],
-        'cpu': r[0][0]['cpu'],
-        'tipo_ram': r[0][0]['tipoRam'],
-        'capacidad_ram': r[0][0]['capacidadRam'],
-        'gpu_marca': r[0][0]['graficaMarca'],
-        'gpu_modelo': r[0][0]['graficaModelo'],
-        'img_name': 'notFound'
-    }
-    try:
-        with open("/media/compu_img/"+context['modelo']+".png") as img:
-            if img:
-                context['img_name'] = context['modelo']
-    except:
-        context['img_name'] = 'notFound'
-    
-    return render(request, "match.html", context)
-
-#Clase principal

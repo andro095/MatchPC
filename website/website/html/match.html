@@ -50,21 +50,36 @@
 
                 {% if query %}
 
-                <div class="pc_container">
-                    <img id="round_img" src="/media/compu_img/{{img_name}}.png">
-                    <div id="pc_data">
-                        <h2>{{modelo}}</h2>
-                        <p>Tipo: {{tipo}}</p>
-                        <p>Marca: {{marca}}</p>
-                        <p>Modelo: {{modelo}}</p>
-                        <p>CPU: {{cpu}}</p>
-                        <p>Tipo de RAM: {{tipo_ram}}</p>
-                        <p>Capacidad RAM: {{capacidad_ram}}</p>
-                        <p>GPU marca: {{gpu_marca}}</p>
-                        <p>GPU modelo: {{gpu_modelo}}</p>
-                    </div>
-                </div>
-                <br>
+                    {% if size > 0 %}
+
+                        {% for i in request %}
+
+                            <div class="pc_container">
+                                <img id="round_img" src="/media/compu_img/{{img_name}}">
+                                <div id="pc_data">
+                                    <h2>{{i.0.modelo}}</h2>
+                                    <p>Tipo: {{i.0.tipo}}</p>
+                                    <p>Marca: {{i.0.marca}}</p>
+                                    <p>Modelo: {{i.0.modelo}}</p>
+                                    <p>CPU: {{i.0.cpu}}</p>
+                                    <p>Tipo de RAM: {{i.0.tipoRam}}</p>
+                                    <p>Capacidad RAM: {{i.0.capacidadRam}}</p>
+                                    <p>GPU marca: {{i.0.graficaMarca}}</p>
+                                    <p>GPU modelo: {{i.0.graficaModelo}}</p>
+                                </div>
+                            </div>
+                            <br>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="pc_container">
+                            <h2>Lo sentimos :(</h2>
+                            <p>No hemos encontrado una computadora que cumpla con sus necesidades.</p>
+                        </div>
+
+                    {% endif %}
 
                 {% endif %}
 
