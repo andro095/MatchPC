@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        {% block scripts %}
+        <script type="text/javascript">
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer",
+            {
+                theme: "light2",
+                title:{
+                    text: "Estadísticas de Recomendación"
+                },		
+                data: [
+                {       
+                    type: "pie",
+                    showInLegend: true,
+                    toolTipContent: "{y} - #percent %",
+                    legendText: "{indexLabel}",
+                    dataPoints: [{% for i in request %}{y:{{i.1}}, indexLabel:"{{i.0.modelo}}" },{% endfor %}]
+                }
+                ]
+            });
+            chart.render();
+        }
+        </script>
+        {% endblock scripts %}
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </head>
+
+    <body>
+        <style>
+            #chartContainer1{
+                background-color: white;
+                box-shadow: 10px 10px 5px #aaaaaa;
+                margin-left: 5vw;
+                margin-right: 5vw;
+                border-style: solid;
+                border-width: 5px;
+                border-color: white;
+                padding: 2vw;
+                font-size: 1.2em;
+                text-align: left;
+            }
+        </style>
+        {% block content %}
+        <div id="chartContainer1">
+        <div id="chartContainer" style="height: 450px; width: 100%;"></div>
+    </div>
+        {% endblock content %}
+    </body>
+</html>
