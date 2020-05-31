@@ -27,7 +27,7 @@ CREATE
   (`25` :PC {tipo:"Escritorio",marca:"CybertronPC",modelo:"CybertronPC - BLU-Print",cpu:"Intel Core i9-9900X",tipoRam:"DDR4 SDRAM",capacidadRam:"64 GB",graficaMarca:"NVIDIA",graficaModelo:"Dual NVIDIA GeForce RTX 2080 Ti",price:"$5,549.00"}) ,
   (`26` :User {ID:"User010",Name:"exasperatedkaty8",Password:"dwat6uYG"}) ,
   (`27` :Ambito {Ambito:"Bioinformatica"}) ,
-  (`28` :PC {tipo:"Laptop",marca:"HP",modelo:"15-ef0875ms 15.6"",cpu:"AMD Athlon 3000",tipoRam:"DDR4 SDRAM",capacidadRam:"4 GB",graficaMarca:"AMD",graficaModelo:"AMD Radeon",price:"$399.00"}) ,
+  (`28` :PC {tipo:"Laptop",marca:"HP",modelo:"15-ef0875ms 15.6",cpu:"AMD Athlon 3000",tipoRam:"DDR4 SDRAM",capacidadRam:"4 GB",graficaMarca:"AMD",graficaModelo:"AMD Radeon",price:"$399.00"}) ,
   (`29` :User {ID:"User011",Name:"suzyclever29",Password:"vC3Ya5D7"}) ,
   (`30` :User {ID:"User012",Name:"caringdel56",Password:"7UxcpU9K"}) ,
   (`31` :Ambito {Ambito:"Mecanica"}) ,
