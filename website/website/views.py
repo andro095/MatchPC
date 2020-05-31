@@ -20,6 +20,23 @@ def match(request):
     
     return render(request, "match.html", context)
 
+def agregar(request):
+    ambito = request.POST["ambito"]
+    nivel = request.POST["nivel"]
+    pc = request.POST["modelo"]
+    tipo= request.POST["tipo"]
+    marca= request.POST["marca"]
+    modelo= request.POST["modelo"]
+    cpu= request.POST["cpu"]
+    tipoRam= request.POST["tipoRam"]
+    capacidadRam= request.POST["capacidadRam"]
+    graficaMarca= request.POST["graficaMarca"]
+    graficaModelo= request.POST["graficaModelo"]
+    price= request.POST["price"]
+    db = Graph_manager()
+    r = db.add_User(ambito, nivel, pc, tipo, marca, modelo, cpu, tipoRam, capacidadRam, graficaMarca, graficaModelo, price)
+    return render(request, "aportar.html", {})
+
 def aportar(request):
     return render(request, "aportar.html", {})
 
@@ -70,7 +87,7 @@ class Graph_manager:
                 results.append((req, line["COUNT(p)"], img_name))
                 
             return sorted(results, key=lambda kv: kv[1], reverse=True)
-            
+    '''       
     def add_User(self, ambito, nivel, pc):
         new_id = self.generate_id()
         with self.db.session() as session:
@@ -78,6 +95,23 @@ class Graph_manager:
             session.run("MATCH (a:User),(b:Ambito) WHERE a.ID = '%s' AND b.Ambito = '%s' CREATE (a)-[r:Ambito]->(b)"%(new_id, ambito))
             session.run("MATCH (a:User),(b:Nivel) WHERE a.ID = '%s' AND b.Level = '%s' CREATE (a)-[r:Nivel]->(b)"%(new_id,nivel))
             session.run("MATCH (a:User),(b:PC) WHERE a.ID = '%s' AND b.modelo = '%s' CREATE (a)-[r:PC]->(b)"%(new_id,pc))
+            print("Usuario añadido con exito")
+    '''
+    def add_User(self, ambito, nivel, pc, tipo, marca, modelo, cpu, tipoRam, capacidadRam, graficaMarca, graficaModelo, price):
+        new_id = self.generate_id()
+        with self.db.session() as session:
+            session.run("CREATE (a:User { ID: '%s' }) "%(new_id))
+            session.run("MATCH (a:User),(b:Ambito) WHERE a.ID = '%s' AND b.Ambito = '%s' CREATE (a)-[r:Ambito]->(b)"%(new_id, ambito))
+            session.run("MATCH (a:User),(b:Nivel) WHERE a.ID = '%s' AND b.Level = '%s' CREATE (a)-[r:Nivel]->(b)"%(new_id,nivel))
+            num = session.run("MATCH (p:PC {modelo:'%s'}) RETURN COUNT(p) AS num")
+            n = 0
+            for i in num:
+                n = i['num']
+            if(n>0):
+                session.run("MATCH (a:User),(b:PC) WHERE a.ID = '%s' AND b.modelo = '%s' CREATE (a)-[r:PC]->(b)"%(new_id,pc))
+            else:
+                session.run("CREATE (p:PC {tipo:'%s',marca:'%s',modelo:'%s',cpu:'%s',tipoRam:'%s',capacidadRam:'%s',graficaMarca:'%s',graficaModelo:'%s',price:'%s'}) "%(tipo, marca, modelo, cpu, tipoRam, capacidadRam, graficaMarca, graficaModelo, price))
+                session.run("MATCH (a:User),(b:PC) WHERE a.ID = '%s' AND b.modelo = '%s' CREATE (a)-[r:PC]->(b)"%(new_id,pc))
             print("Usuario añadido con exito")
     
     def generate_id(self):

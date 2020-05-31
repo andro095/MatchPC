@@ -15,37 +15,49 @@
         
 			<html>
 				<body>
-					<form>
-					  <p>Nombre: <input type="text" name="nombre" size="40" required></p>
-					  
-						<label for="ambito">Escoge tu ambito:</label>
-						<select name="ambito" id="ambito">
-						  <option value="Diseño Grafico">Diseño Grafico</option>
-						  <option value="Civil Industrial">Civil Industrial</option>
-						  <option value="Mecanica">Mecanica</option>
-						  <option value="Electronica">Electronica</option>
-						  <option value="Ing. Industrial">Ing. Industrial</option>
-						  <option value="Bioinformatica">Bioinformatica</option>
-						  <option value="Ing. en computacion">Ing. en computacion</option>
-						</select>
-						
-						<label for="nivel">Escoge tu ambito:</label>
-						<select name="ambito" id="ambito">
-						  <option value="Diversificado">Diversificado</option>
-						  <option value="Profesional">Profesional</option>
-						  <option value="Universitario">Universitario</option>
-						</select>
-						
-					  <p>Tipo de Computadora: <input type="text" name="tipo" size="40" placeholder="Escritorio, Laptop o 2 EN 1" required></p>
-					  <h1><center>¿Que computadora posees?</center></h1>
-					  <p>Marca: <input type="text" name="marca" size="40" required></p>
-					  <p>Modelo: <input type="text" name="modelo" size="40" required></p>
-					  <p>CPU: <input type="text" name="cpu" size="40" required></p>
-					  <p>Tipo de Ram: <input type="text" name="tipoRam" size="40" required></p>
-					  <p>Capcidad de RAM: <input type="text" name="capacidadRam" size="40" required></p>
-					  <p>Marca de la Tarjeta Grafica: <input type="text" name="graficaMarca" size="40" required></p>
-					  <p>Modelo de la Tarjeta Grafica: <input type="text" name="graficaModelo" size="40" required></p>
-				  </form>
+					<div class="container">
+						<h1>APORTAR</h1>
+						<h2>Por favor complete la Información a continuación para recomendar su computadora.</h2>
+						<form method="POST">
+							{% csrf_token %}
+							<fieldset>
+								<legend>Información de usuario</legend>
+								<p>Nombre: <input type="text" name="nombre" size="40" required></p>
+								<label for="ambito">Escoge tu ambito:</label>
+								<select name="ambito" id="ambito">
+									<option value="" disabled selected>Ámbito de uso</option>
+									<option value="Ing. en Computacion">Ingeniería en Computación</option>
+									<option value="Ing. Industrial">Ingeniería Industrial</option>
+									<option value="Diseño Gráfico">Diseño Gráfico</option>
+									<option value="Mecanica">Mecanica</option>
+									<option value="Bioinformatica">Bioinformatica</option>
+									<option value="Electronica">Electronica</option>
+									<option value="Civil Industrial">Civil Industrial</option>
+								</select>
+								<label for="nivel">Escoge tu ambito:</label>
+								<select name="nivel" id="ambito">
+									<option value="" disabled selected>Nivel de estudios</option>
+									<option value="Diversificado">Diversificado</option>
+									<option value="Universidad">Universitario</option>
+									<option value="Profesional">Profesional</option>
+								</select>
+							</fieldset>
+							<br>
+							<fieldset>
+								<legend>¿Que computadora posees?</legend>
+								<p>Tipo de Computadora: <input type="text" name="tipo" size="40" placeholder="Escritorio, Laptop o 2 EN 1" required></p>
+								<p>Marca: <input type="text" name="marca" size="40" required></p>
+								<p>Modelo: <input type="text" name="modelo" size="40" required></p>
+								<p>CPU: <input type="text" name="cpu" size="40" required></p>
+								<p>Tipo de Ram: <input type="text" name="tipoRam" size="40" required></p>
+								<p>Capcidad de RAM: <input type="text" name="capacidadRam" size="40" required></p>
+								<p>Marca de la Tarjeta Grafica: <input type="text" name="graficaMarca" size="40" required></p>
+								<p>Modelo de la Tarjeta Grafica: <input type="text" name="graficaModelo" size="40" required></p>
+							</fieldset>
+							<br>
+							<input type="submit" id="btn1" value="Enviar">
+					  </form>
+					</div>
 				</body>
 			</html>
         
