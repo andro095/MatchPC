@@ -26,20 +26,14 @@ def aportar(request):
 def match_query(request):
     db = Graph_manager()
     r = db.recommend(request.GET["txtAmbito"],request.GET["txtNivel"])
+    req_size = len(r)
+
     context = {
         'query': True,
         'request': r,
-        'size': len(r),
-        'img_name': 'notFound.png'
+        'size': req_size
     }
-    '''
-    if(len(r) > 0):
-        IMG_URL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/media/compu_img/"
-        if(os.path.isfile(IMG_URL+context['request'][0]+".png")):
-            context['img_name'] = context['request']+".png"
-        elif(os.path.isfile(IMG_URL+context['request']+".jpg")):
-            context['img_name'] = context['request']+".jpg"
-    '''
+
     return render(request, "match.html", context)
 
 #Clase principal
@@ -64,8 +58,16 @@ class Graph_manager:
         with self.db.session() as session:
             record = session.run("MATCH (p:PC),(u:User) WHERE (u)-[:Ambito]->({Ambito:'%s'}) AND (u)-[:Nivel]->({Level:'%s'}) AND (u)-[:PC]->(p) RETURN p, COUNT(p)"%(ambito,nivel))
             results = []
+            IMG_URL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+"/media/compu_img/"
             for line in record:
-                results.append((dict(line["p"]), line["COUNT(p)"]))
+                req = dict(line["p"])
+                img_name = "notFound.png"
+                if(os.path.isfile(IMG_URL+req['modelo']+".png")):
+                    img_name = req['modelo']+".png"
+                elif(os.path.isfile(IMG_URL+req['modelo']+".jpg")):
+                    img_name = req['modelo']+".jpg"
+
+                results.append((req, line["COUNT(p)"], img_name))
                 
             return sorted(results, key=lambda kv: kv[1], reverse=True)
             
